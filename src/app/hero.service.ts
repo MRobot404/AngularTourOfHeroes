@@ -30,7 +30,7 @@ export class HeroService {
   getHeroNo404<Data>(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/?id=${id}`;
     return this.http.get<Hero[]>(url).pipe(
-      map((heroes) => heroes[0]), 
+      map((heroes) => heroes[0]),
       tap((h) => {
         const outcome = h ? 'fetched' : 'did not find';
         this.log(`${outcome} hero id=${id}`);
@@ -67,7 +67,6 @@ export class HeroService {
       catchError(this.handleError<Hero>('addHero'))
     );
   }
-
 
   deleteHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
